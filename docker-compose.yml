@@ -1,13 +1,22 @@
 services:
   frontend:
     build: ./frontend
+    volumes:
+      - ./frontend:/app # Mounts local frontend code to container
+      - /app/node_modules # Prevents overwriting node_modules
     ports:
       - "3000:3000"
-    depends_on:
-      - backend
+    command: npm run dev # Keeps Next.js in dev mode for live updates
+    environment:
+      - NODE_ENV=development
+
   backend:
     build: ./backend
+    volumes:
+      - ./backend:/app # Mounts local backend code to container
+      - /app/node_modules # Prevents overwriting node_modules
     ports:
       - "5000:5000"
+    command: npm run dev # Keep backend running in watch mode
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
