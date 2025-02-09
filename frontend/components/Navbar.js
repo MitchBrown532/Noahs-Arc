@@ -7,7 +7,7 @@ export default function Navbar() {
         <h1 className="text-lg font-bold">Noah's Arc</h1>
         <ul className="flex space-x-4">
           <li>
-            <Link href="/home" className="hover:underline">
+            <Link href="/" className="hover:underline">
               Home
             </Link>
           </li>
